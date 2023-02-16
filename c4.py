@@ -31,23 +31,13 @@ class Sistema():
         # con un método de asignar
         self.__numero_pacientes = len(self.__lista_pacientes)
 
-    def ingresarPaciente(self):
+    def ingresarPaciente(self,u):
         #Solicitar datos
-        nombre = input("Ingrese el Nombre: ")
-        cedula =int(input("Ingrese la Cédula: "))
-        genero =input("Ingrese el Género: ")
-        servicio = input("Ingrese el Servicio: ")
-
-        #Crear objeto Paciente y le asigno los datos
-        p = Paciente()
-        p.asignarNombre(nombre)
-        p.asignarCedula(cedula)
-        p.asignarGenero(genero)
-        p.asignarServicio(servicio)
+        
 
         #Guardar paciente en la lista
         # self.__lista_pacientes[p.verCedula()]= p
-        self.__lista_pacientes.append(p)
+        self.__lista_pacientes.append(u)
 
         #Actualización la cantidad de pacientes en el sistema
         self.__numero_pacientes = len(self.__lista_pacientes)
@@ -65,22 +55,34 @@ class Sistema():
                 print("Género: " + paciente.verGenero())
                 print("Servicio: " + paciente.verServicio())
 
+def main ():
 
-mi_sistema = Sistema()
+    mi_sistema = Sistema()
 
-while True:
-    menu = int(input("""1.Nuevo Paciente
-    2. Número de Pacientes
-    3. Datos Paciente
-    4. Salir
-    > """))
-    if menu == 1:
-        mi_sistema.ingresarPaciente()
-    elif menu == 2:
-        print("Número total de pacientes: " + str(mi_sistema.verNumeroPacientes()))
-    elif menu == 3:
-        mi_sistema.verDatosPacientes()
-    elif menu == 4:
-        break
-    else: 
-        print("Opción inválida")
+    while True:
+        menu = int(input("""1.Nuevo Paciente
+        2. Número de Pacientes
+        3. Datos Paciente
+        4. Salir
+        > """))
+        if menu == 1:
+            nombre = input("Ingrese el Nombre: ")
+            cedula =int(input("Ingrese la Cédula: "))
+            genero =input("Ingrese el Género: ")
+            servicio = input("Ingrese el Servicio: ")
+
+            #Crear objeto Paciente y le asigno los datos
+            p = Paciente()
+            p.asignarNombre(nombre)
+            p.asignarCedula(cedula)
+            p.asignarGenero(genero)
+            p.asignarServicio(servicio)
+            mi_sistema.ingresarPaciente(p)
+        elif menu == 2:
+            print("Número total de pacientes: " + str(mi_sistema.verNumeroPacientes()))
+        elif menu == 3:
+            mi_sistema.verDatosPacientes()
+        elif menu == 4:
+            break
+        else: 
+            print("Opción inválida")
