@@ -13,7 +13,7 @@ class Paciente():
         return self.__genero
     def verServicio(self):
         return self.__servicio 
-
+#jkhkjh
     def asignarNombre(self,n):
         self.__nombre = n
     def asignarCedula(self,c):
